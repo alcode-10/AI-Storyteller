@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StoryTeller_Profile</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="styles1.css" />
+</head>
+<body>
+   <div class="slideshow">
+      <img class="slide-img active" src="./storyteller/assets/background.jpg" alt="slide 1" />
+      <img class="slide-img" src="./storyteller/assets/background-1.jpg" alt="slide 1" />
+      <img class="slide-img" src="./storyteller/assets/background-2.jpg" alt="slide 1" />
+      <img class="slide-img" src="./storyteller/assets/background-3.jpg" alt="slide 1" />
+      <img class="slide-img" src="./storyteller/assets/background-4.jpg" alt="slide 1" />
+      <img class="slide-img" src="./storyteller/assets/background-5.jpg" alt="slide 1" />
+    </div>
+    
+     <div class="auth-container">
+  <h2>Profile</h2>
+  <div id="profileData" >Loading...</div>
+   <div class="nav-buttons">
+      <a href="storyteller/index.html"><button>Story Generator</button></a>
+      <a href="signup.html"><button>Signup</button></a>
+      <a href="login.html"><button>Login</button></a>
+      <button onclick="logout()">Logout</button>
+   </div>
+   </div>
+
+ 
+  <script>
+    const slides = document.querySelectorAll(".slide-img");
+  let current = 0;
+  setInterval(() => {
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
+  }, 5000);
+    fetch('/api/user/profile')
+      .then(res => res.ok ? res.json() : Promise.reject())
+      .then(data => {
+        document.getElementById('profileData').innerHTML = `
+          <span style="color: darkgreen;"><strong>Username:</strong> ${data.username}<br />
+          <span style="color: darkgreen;"><strong>Prompts Submitted:</strong> ${data.prompts}<br />
+          <span style="color: darkgreen;"><strong>Downloads:</strong> ${data.downloads}<br />
+          <span style="color: darkgreen;"><strong>Merges:</strong> ${data.merges}<br />
+        `;
+      })
+      .catch(() => window.location.href = '/login.html');
+
+    function logout() {
+      fetch('/logout').then(() => window.location.href = '/login.html');
+    }
+  </script>
+</body>
+</html>

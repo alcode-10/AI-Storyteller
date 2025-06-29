@@ -1,0 +1,182 @@
+/* Import Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Caprasimo&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins&family=Quintessential&display=swap");
+
+/* Root Color Variables */
+:root {
+  --neon-pink: #ff69b4;
+  --hot-pink: #ff1493;
+  --soft-white: #ffffffdd;
+  --glow-white: #ffffff;
+}
+
+/* Reset and Base */
+body {
+  margin: 0;
+  padding: 12px;
+  width:100%;
+  font-family: "Quintessential", serif;
+  background: url("./assets/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: var(--soft-white);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main Container */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(255, 105, 180, 0.3);
+  backdrop-filter: blur(6px);
+  border: 20px solid #ff69bcae;
+  transition: transform 0.3s;
+}
+
+.container:hover {
+  transform: scale(1.01);
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  font-size: 3.5em;
+  margin-bottom: 25px;
+  color: darkgreen;
+  text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+}
+
+/* Text Area */
+#storyInput {
+  width: 100%;
+  height: 250px;
+  padding: 4px;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  color: darkgreen;
+  border: 2px solid #ff69b460;
+  border-radius: 10px;
+  resize: vertical;
+  box-shadow: inset 0 0 8px #ff69b450;
+  margin-top: 10px;
+}
+
+
+/* Labels */
+label {
+  display: block;
+  margin: 12px 0 6px;
+  color: darkgreen;
+  font-weight: bold;
+  text-shadow: 0 0 5px #ffb6c1;
+}
+
+/* Buttons */
+button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 10px;
+  background: var(--neon-pink);
+  color: rgb(0, 100, 48);
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: var(--hot-pink);
+  transform: scale(1.05);
+}
+
+/* Dropdown Menus */
+select {
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255, 192, 203, 0.448);
+  color: darkgreen;
+  border: 2px solid #ff69b450;
+  box-shadow: 0 0 5px #ff69b440;
+}
+
+/* Audio Section */
+#audioResults p {
+  margin-top: 15px;
+  font-weight: bold;
+  color: darkgreen;
+}
+
+#audioResults audio {
+  display: block;
+  margin-top: 5px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ff69b470;
+}
+
+#storyInput:focus {
+  outline: none;
+  box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4;
+  border-color: #ff69b4;
+}
+select:hover {
+  box-shadow: 0 0 8px #ff69b440;
+  cursor: pointer;
+}
+
+/* Responsive Text and Elements */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  #storyInput {
+    height: 250px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+.slideshow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slide-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide-img.active {
+  opacity: 1;
+}
+
+#prompt  {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid #ff69b450;
+  color: darkgreen;
+  box-shadow: inset 0 0 8px #ff69b440;
+}
+
+

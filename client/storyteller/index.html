@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Story teller</title>
+    <link rel="icon" href="../favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins&family=Quintessential&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>📝Storyteller</h1>
+      <label for="storySelect">📚 Select a Story:</label>
+      <select id="storySelect">
+        <option value="" disabled selected>Select a Story</option>
+      </select>
+
+      <!-- Prompt Input -->
+      <label for="prompt">🪄 Enter a Prompt:</label>
+      <input
+        type="text"
+        id="prompt"
+        placeholder="e.g., A magical school in the clouds..."
+      />
+
+      <!-- Generate Button -->
+      <button onclick="generateAIStory()">✨ Generate AI Story</button>
+
+      <textarea
+        id="storyInput"
+        rows="10"
+        placeholder="Enter story like:\nNarrator: Once upon a time...\nJack: Hello!"
+      ></textarea>
+      <label for="translatelang">🌐Translate to :</label>
+      <select id="translatelang">
+        <option value="">None</option>
+        <option value="hi-IN">Hindi</option>
+        <option value="en-IN">English(India)</option>
+        <option value="de-DE">German</option>
+        <option value="zh-CN">Chinese</option>
+      </select>
+      <br />
+      <button id="generateBtn">Generate Voice</button>
+      <div>
+        <label
+          ><input type="checkbox" id="autoplayToggle" /> Auto-play after each
+          line</label
+        >
+      </div>
+      <div id="voiceSelectors"></div>
+      <div id="audioResults"></div>
+      <audio id="audioPlayer" controls style="display: none"></audio>
+    </div>
+    <div class="slideshow">
+      <img class="slide-img" src="assets/background.jpg" alt="slide 1" />
+      <img class="slide-img" src="assets/background-1.jpg" alt="slide 1" />
+      <img class="slide-img" src="assets/background-2.jpg" alt="slide 1" />
+      <img class="slide-img" src="assets/background-3.jpg" alt="slide 1" />
+      <img class="slide-img" src="assets/background-4.jpg" alt="slide 1" />
+      <img class="slide-img" src="assets/background-5.jpg" alt="slide 1" />
+    </div>
+    
+
+    <script src="script.js"></script>
+  </body>
+</html>

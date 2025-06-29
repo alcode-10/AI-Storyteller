@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StoryTeller_Signup</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles1.css" />
+</head>
+<body>
+     <div class="slideshow">
+      <img class="slide-img active" src="./storyteller/assets/background.jpg" alt="slide 1" />
+      <img class="slide-img" src="./storyteller/assets/background-1.jpg" alt="slide 1" />
+      <img class="slide-img" src="./storyteller/assets/background-2.jpg" alt="slide 1" />
+      <img class="slide-img" src="./storyteller/assets/background-3.jpg" alt="slide 1" />
+      <img class="slide-img" src="./storyteller/assets/background-4.jpg" alt="slide 1" />
+      <img class="slide-img" src="./storyteller/assets/background-5.jpg" alt="slide 1" />
+    </div> 
+    <div class="auth-container">
+  <form onsubmit="signup(event)">
+    <h2>Signup</h2>
+    <input id="signupUsername" required placeholder="Username" /><br/>
+    <input id="signupPassword" type="password" required placeholder="Password" /><br/>
+    <button type="submit">Signup!</button>
+    <p style="color: darkgreen;">Already have an account? <a href="login.html" style="color: darkgreen;">Login Here</a></p>
+  </form>
+</div>
+  <script>
+    const slides = document.querySelectorAll(".slide-img");
+  let current = 0;
+  setInterval(() => {
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
+  }, 5000);
+
+  fetch('/logout');
+//   fetch('/api/user/profile').then(res=>res.ok && res.json())
+//   .then(()=> window.location.href='/profile.html')
+//   .catch(() =>{});
+
+    function signup(e) {
+      e.preventDefault();
+      const username = document.getElementById("signupUsername").value;
+      const password = document.getElementById("signupPassword").value;
+
+     fetch('/api/auth/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    })
+    .then(res => {
+      if (res.ok) {
+        alert("Signup successful!");
+        window.location.href = '/login.html';
+      } else {
+        alert("Signup failed! Try another username.");
+      }
+    })
+    .catch(() => alert("Something went wrong!"));
+  }
+  </script>
+</body>
+</html>
